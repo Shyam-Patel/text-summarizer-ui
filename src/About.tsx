@@ -1,9 +1,7 @@
 import React from 'react'
 
-class About extends React.Component{
-    render(){
-        return <h1>Shyam Patel</h1>
-    }
+const About: React.FC = () => {
+    return (<h1>Shyam Patel</h1>)
 }
 
 export default About

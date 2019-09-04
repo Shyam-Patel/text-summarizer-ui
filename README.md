@@ -4,7 +4,7 @@
 
 ### Setup
 ___
-This project was bootstrapped using the creat-react-app command. Clone this repository -> run `npm install` to fetch all the dependencies -> you should be good to go!
+This project was bootstrapped using the create-react-app command. Clone this repository -> run `npm install` to fetch all the dependencies -> you should be good to go!
 
 
 ### Running the app
