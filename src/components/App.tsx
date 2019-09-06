@@ -9,7 +9,7 @@ import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 
 
-export class App extends React.Component {
+export default class App extends React.Component {
   
   handleClick(): void{
     fetch("http://127.0.0.1:5000/apitest/greet")
@@ -39,5 +39,3 @@ export class App extends React.Component {
   }
   
 }
-
-export default App;
