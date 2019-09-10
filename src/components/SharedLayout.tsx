@@ -1,5 +1,7 @@
 import React from 'react';
 import NavigationBar from './NavigationBar';
+import Footer from './Footer';
+import '../styles/SharedLayout.css';
 
 export default class SharedLayout extends React.Component{
 
@@ -12,7 +14,8 @@ export default class SharedLayout extends React.Component{
         return(
             <div>
                 <NavigationBar/>
-                {this.props.children}
+                <div className="child-container">{this.props.children}</div>
+                <Footer/>
             </div>
         );
     }

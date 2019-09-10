@@ -1,10 +1,8 @@
 import React from 'react';
-
-import { Menubar } from 'primereact/components/menubar/Menubar';
-/* import 'primereact/resources/themes/nova-light/theme.css';
-import 'primereact/resources/primereact.min.css'; */
-import 'primeicons/primeicons.css';
 import { withRouter } from 'react-router';
+import '../styles/SharedLayout.css';
+import { Menubar } from 'primereact/components/menubar/Menubar';
+import 'primeicons/primeicons.css';
 
 export class NavigationBar extends React.Component<any,any>{
     state = {
@@ -16,8 +14,9 @@ export class NavigationBar extends React.Component<any,any>{
                 command: () => { this.navigateToPage('/') }
             },
             {
-                label: "Details",
-                icon: "pi pi-sitemap"
+                label: "Technical Discussion",
+                icon: "pi pi-sitemap",
+                command: () => { this.navigateToPage('/background')}
             },
             {
                 label: "About",
@@ -34,7 +33,7 @@ export class NavigationBar extends React.Component<any,any>{
     render(){
         return(
             <div>
-                <Menubar model={this.state.navbarItems}>
+                <Menubar model={this.state.navbarItems} className="menubar">
                 </Menubar>
             </div>
         );

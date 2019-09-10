@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import {Route, Router, Switch} from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
-import './styles/Index.css';
+import './styles/SharedLayout.css';
 
-import App from './components/App';
+import Home from './components/Home';
 import About from './components/About';
+import Background from './components/Background';
 import SharedLayout from './components/SharedLayout';
 import PageNotFound from './components/PageNotFound';
 
@@ -16,7 +17,8 @@ const routing = (
     <Router history={browserHistory}>
         <SharedLayout>
             <Switch>
-            <Route exact path="/" component={App}></Route>
+            <Route exact path="/" component={Home}></Route>
+            <Route path="/background" component={Background}></Route>
             <Route path="/about" component={About}></Route>
             <Route component={PageNotFound}></Route>
             </Switch>

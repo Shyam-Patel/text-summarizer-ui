@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/App.css';
+import '../styles/Home.css';
 import $ from 'jquery';
 
 
@@ -9,7 +9,7 @@ import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 
 
-export default class App extends React.Component {
+export default class Home extends React.Component {
   
   handleClick(): void{
     fetch("http://127.0.0.1:5000/apitest/greet")
@@ -26,14 +26,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="home-container">
           <p>
-            Welcome to iSummarize!
+            Welcome to SumItUp!
           </p>
           <Button label="Call API" className="p-button-raised" onClick={this.handleClick}/>
           <p id="apiResult"></p>
-        </header>
       </div>
     );
   }
