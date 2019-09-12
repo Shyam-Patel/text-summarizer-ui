@@ -9,14 +9,13 @@ Clone this repository -> run `npm install` to fetch all the dependencies -> you 
 ### Running the app
 ___
 
-In the project directory, you can run:
+Open the command prompt and navigate to the project directory. You can run:
 
 #### `npm start`
 
-Runs the app in the development mode. The page will reload if you make edits. You will also see any lint errors in the console.
+Runs the app in the development mode. The page will reload if you make edits. You will also see any errors in the console.
 
 #### `npm run build`
 
 Builds the app for production to the `build` folder.<br>
-It bundles React in production mode and optimizes the build for the best performance.
-The build is minified and the filenames include the hashes.<br>
+It bundles React in production mode. It minifies & optimizes the build for the best performance.<br>
