@@ -1,8 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import '../styles/SharedLayout.css';
-import { Menubar } from 'primereact/components/menubar/Menubar';
-import 'primeicons/primeicons.css';
+import {withRouter} from 'react-router';
+import {Menubar} from 'primereact/components/menubar/Menubar';
 
 export class NavigationBar extends React.Component<any,any>{
     state = {

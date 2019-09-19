@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import {Route, Router, Switch} from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
-import './styles/SharedLayout.css';
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 import Home from './components/Home';
 import About from './components/About';
