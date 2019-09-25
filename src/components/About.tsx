@@ -1,12 +1,11 @@
 import React from 'react'
 
-const About: React.FC = () => {
-    return (
+export default class About extends React.Component{
+    render(){
+        return (
         <div>
             <br/>
             <b>Shyam Patel</b>
         </div>
-    );
+    )};
 }
-
-export default About

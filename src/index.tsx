@@ -7,11 +7,11 @@ import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
-import Home from './components/Home';
-import About from './components/About';
-import Background from './components/Background';
-import SharedLayout from './components/SharedLayout';
-import PageNotFound from './components/PageNotFound';
+import Home from 'components/Home';
+import About from 'components/About';
+import Background from 'components/Background';
+import SharedLayout from 'components/shared/SharedLayout';
+import PageNotFound from 'components/shared/PageNotFound';
 
 let browserHistory = createBrowserHistory();
 

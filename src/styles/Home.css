@@ -4,3 +4,8 @@
   align-items: center;
   font-size: calc(10px + 2vmin);
 }
+
+.ratio-slider-container{
+  text-align: center;
+  width: 150px;
+}

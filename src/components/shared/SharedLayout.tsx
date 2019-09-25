@@ -1,12 +1,12 @@
 import React from 'react';
-import NavigationBar from './NavigationBar';
-import Footer from './Footer';
+import NavigationBar from 'components/shared/NavigationBar';
+import Footer from 'components/shared/Footer';
 
-import '../styles/SharedLayout.css';
+import 'styles/SharedLayout.css';
 
 export default class SharedLayout extends React.Component{
 
-    componentDidMount(){
+    componentDidMount(){ 
         //this fires when we navigate the app
     }
 

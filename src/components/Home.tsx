@@ -1,10 +1,12 @@
 import React from 'react';
 
-import '../styles/Home.css';
+import 'styles/Home.css';
 import $ from 'jquery';
 
 import {Button} from 'primereact/button';
 import {InputTextarea} from 'primereact/inputtextarea';
+import {Panel} from 'primereact/panel';
+import {Slider} from 'primereact/slider';
 
 
 export default class Home extends React.Component<any,any> {
@@ -13,25 +15,14 @@ export default class Home extends React.Component<any,any> {
     super(props);
 
     this.state = {
-      textAreaText: "Thomas A. Anderson is a man living two lives. By day he is an " + 
-      "average computer programmer and by night a hacker known as " + 
-      "Neo. Neo has always questioned his reality, but the truth is " + 
-      "far beyond his imagination. Neo finds himself targeted by the " + 
-      "police when he is contacted by Morpheus, a legendary computer " + 
-      "hacker branded a terrorist by the government. Morpheus awakens " + 
-      "Neo to the real world, a ravaged wasteland where most of " + 
-      "humanity have been captured by a race of machines that live " + 
-      "off of the humans' body heat and electrochemical energy and " + 
-      "who imprison their minds within an artificial reality known as " + 
-      "the Matrix. As a rebel against the machines, Neo must return to " +
-      "the Matrix and confront the agents: super-powerful computer " + 
-      "programs devoted to snuffing out Neo and the entire human " + 
-      "rebellion. "
+      summaryPanelCollapsed: true,
+      inputText: "",
+      summaryRatio: 50
     }
   }
   
-  handleClick(): void{
-      fetch("http://127.0.0.1:5000/summarize/text", 
+  summarizeBtnClicked(): void{
+      fetch("http://127.0.0.1:5000/gensim-summarize/text", 
       {
           method: 'POST',
           headers: 
@@ -41,30 +32,36 @@ export default class Home extends React.Component<any,any> {
           },
           body: JSON.stringify({
             user: "Shyam",
-            text: this.state.textAreaText
+            text: $("#input-text-box").text(),
+            ratio: this.state.summaryRatio / 100
           })
       })
       .then(response => response.json())
       .then(
         (result) => {
-          $("#apiResult").text(result);
+            $("#summaryResult").text(result);
+
+            this.setState({
+              summaryPanelCollapsed: false
+            });
         },
         (error) => {
-          $("#apiResult").text("Error contacting API: " + error);
+            $("#summaryResult").text("Error contacting API: " + error);
+
+            this.setState({
+              summaryPanelCollapsed: false
+            });
         }
       )
+
   }
 
-  handleTextChange(e: React.FormEvent<HTMLTextAreaElement>):void{
-    let target = e.target as HTMLInputElement;
-
-    this.setState({
-      textAreaText: target.value
-    });
+  onChangeRatioSlider(e: any) {
+    this.setState({ summaryRatio: e.value as number});
   }
 
-  //Note: the syntax "() => fxn()" makes sure that fxn does not create its own "this" context which
-  //      will cause "this.state" to become undefined
+  //NOTE: "() => fxn()" makes sure that the fxn does not create its own "this" context which would cause
+  //  "this.state" to be undefined inside that fxn (you can also bind the function in the constructor instead)
   render() {
     return (
       <div className="home-container">
@@ -72,16 +69,32 @@ export default class Home extends React.Component<any,any> {
             Welcome to SumItUp!
           </p>
 
-          <InputTextarea  value={this.state.textAreaText} 
-                          onChange={(e) => this.handleTextChange(e)}
-                          rows={20} cols={70}> 
-          </InputTextarea>
+          <InputTextarea id="input-text-box" 
+                         rows={20} cols={70}
+                         value={this.state.inputText}
+                         onChange={(e) => this.setState({inputText: e.currentTarget.value})} /> 
 
           <br/>
+          <Button label="Summarize!" className="p-button-raised" onClick={() => this.summarizeBtnClicked()}/>
 
-          <Button label="Call API" className="p-button-raised" onClick={() => this.handleClick()}/>
+          <br/>
+          <div className="ratio-slider-container">
+            <p>Ratio: {this.state.summaryRatio}%</p>
+            <Slider id="ratio-slider"
+                    value={this.state.summaryRatio} 
+                    onChange={(e) => this.onChangeRatioSlider(e)}  />
+          </div>
+          
 
-          <p id="apiResult"></p>
+          <br/>
+          <Panel header="Generated summary" 
+                 toggleable={true} 
+                 collapsed={this.state.summaryPanelCollapsed}
+                 onToggle={(e) => this.setState({summaryPanelCollapsed: e.value as boolean})}>
+              <p id="summaryResult"></p>
+          </Panel> 
+
+          <br/>
       </div>
     );
   }
