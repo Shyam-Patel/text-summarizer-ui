@@ -6,10 +6,16 @@ import $ from 'jquery';
 import {Button} from 'primereact/button';
 import {InputTextarea} from 'primereact/inputtextarea';
 import {Panel} from 'primereact/panel';
-import {Slider} from 'primereact/slider';
+import SummaryConfigurations from './SummaryConfigurations';
 
 
-export default class Home extends React.Component<any,any> {
+interface HomeState{
+  summaryPanelCollapsed: boolean;
+  inputText: string;
+  summaryRatio: number;
+}
+
+export default class Home extends React.Component<any,HomeState> {
 
   constructor(props: any){
     super(props);
@@ -19,6 +25,7 @@ export default class Home extends React.Component<any,any> {
       inputText: "",
       summaryRatio: 50
     }
+
   }
   
   summarizeBtnClicked(): void{
@@ -56,11 +63,13 @@ export default class Home extends React.Component<any,any> {
 
   }
 
-  onChangeRatioSlider(e: any) {
-    this.setState({ summaryRatio: e.value as number});
+  onRatioSliderChange(newValue: number) {
+    this.setState({
+      summaryRatio : newValue
+    })
   }
 
-  //NOTE: "() => fxn()" makes sure that the fxn does not create its own "this" context which would cause
+  //NOTE: "() => fxn()" syntax makes sure that the fxn does not create its own "this" context which would cause
   //  "this.state" to be undefined inside that fxn (you can also bind the function in the constructor instead)
   render() {
     return (
@@ -70,7 +79,7 @@ export default class Home extends React.Component<any,any> {
           </p>
 
           <InputTextarea id="input-text-box" 
-                         rows={20} cols={70}
+                         rows={20} cols={120}
                          value={this.state.inputText}
                          onChange={(e) => this.setState({inputText: e.currentTarget.value})} /> 
 
@@ -78,13 +87,8 @@ export default class Home extends React.Component<any,any> {
           <Button label="Summarize!" className="p-button-raised" onClick={() => this.summarizeBtnClicked()}/>
 
           <br/>
-          <div className="ratio-slider-container">
-            <p>Ratio: {this.state.summaryRatio}%</p>
-            <Slider id="ratio-slider"
-                    value={this.state.summaryRatio} 
-                    onChange={(e) => this.onChangeRatioSlider(e)}  />
-          </div>
-          
+          <SummaryConfigurations summaryRatio={this.state.summaryRatio} 
+                                 onSummaryRatioChange={(e:number) => this.onRatioSliderChange(e)}/>
 
           <br/>
           <Panel header="Generated summary" 

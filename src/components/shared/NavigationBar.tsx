@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router';
 import {Menubar} from 'primereact/components/menubar/Menubar';
+import 'styles/NavigationBar.css';
 
 export class NavigationBar extends React.Component<any,any>{
     state = {
@@ -31,7 +32,8 @@ export class NavigationBar extends React.Component<any,any>{
     render(){
         return(
             <div>
-                <Menubar model={this.state.navbarItems} className="menubar">
+                <Menubar model={this.state.navbarItems}>
+                    <p>SumItUp!</p> 
                 </Menubar>
             </div>
         );

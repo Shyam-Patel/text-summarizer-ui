@@ -1,0 +1,18 @@
+/*Override or add here PrimeReact's css of <Menubar/>*/
+/*Refer to PrimeReact documentation or inspect CSS using browser dev tools to see the classes being used*/
+
+.p-component{
+    text-align: center;
+}
+
+.p-menubar-root-list{
+    padding-right: 2em !important;
+}
+
+.p-menubar-custom{
+    float: left !important;
+    padding-left: 2em !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+}
