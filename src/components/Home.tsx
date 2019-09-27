@@ -74,12 +74,9 @@ export default class Home extends React.Component<any,HomeState> {
   render() {
     return (
       <div className="home-container">
-          <p>
-            Welcome to SumItUp!
-          </p>
+          <p id="home-greeting"> Welcome to SumItUp!</p>
 
-          <InputTextarea id="input-text-box" 
-                         rows={20} cols={120}
+          <InputTextarea rows={20} cols={120}
                          value={this.state.inputText}
                          onChange={(e) => this.setState({inputText: e.currentTarget.value})} /> 
 

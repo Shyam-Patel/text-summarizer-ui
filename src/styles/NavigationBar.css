@@ -1,12 +1,20 @@
+#logo-img{
+    height: 5.6em;
+    width: 10em;
+}
+
+.menubar{
+    text-align: center;
+} 
+
 /*Override or add here PrimeReact's css of <Menubar/>*/
 /*Refer to PrimeReact documentation or inspect CSS using browser dev tools to see the classes being used*/
 
-.p-component{
-    text-align: center;
-}
-
-.p-menubar-root-list{
-    padding-right: 2em !important;
+.p-menubar ul{
+    /*ensure the menu buttons are centered*/
+    margin-right: 12em !important; /*p-menubar-custom's left padding + logo's width*/
+    margin-top: 1.5em !important;
+    margin-bottom: 1.5em !important;
 }
 
 .p-menubar-custom{
@@ -15,4 +23,4 @@
     padding-bottom: 0 !important;
     padding-top: 0 !important;
     padding-right: 0 !important;
-}
+} 

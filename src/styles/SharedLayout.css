@@ -6,6 +6,6 @@ body {
 
 /* Encompasses the space between the nav bar & footer */
 .child-container{
-    background-color: #d9dadb;
+    background-color: #f0f0f0;
     min-height: 100vh; 
 }

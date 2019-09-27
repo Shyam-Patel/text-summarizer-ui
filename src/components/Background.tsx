@@ -1,4 +1,5 @@
 import React from 'react';
+import 'styles/Background.css';
 
 export default class Background extends React.Component{
     
@@ -6,7 +7,9 @@ export default class Background extends React.Component{
         return(
             <div>
                 <br/>
-                <b>[...]</b>
+                <div className="discussion-container">
+                    <p>...coming soon</p>
+                </div>
             </div>
         );
     }
