@@ -1,14 +1,9 @@
 import React from 'react';
+import {SummaryConfigProps, SummaryConfigState} from 'helpers/IStateProps';
 import {Slider} from 'primereact/slider';
+
 import 'styles/SummaryConfigurations.css';
 
-
-interface SummaryConfigProps{
-    summaryRatio: number;
-    onSummaryRatioChange: Function;
-}
-interface SummaryConfigState{
-}
 
 export default class SummaryConfigurations extends React.Component<SummaryConfigProps,SummaryConfigState>{
     constructor(props: SummaryConfigProps){

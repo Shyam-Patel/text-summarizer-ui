@@ -1,19 +1,15 @@
 import React from 'react';
-
-import 'styles/Home.css';
-import $ from 'jquery';
+import SummaryConfigurations from './SummaryConfigurations';
+import {HomeState} from 'helpers/IStateProps';
+import {APIResponse} from 'helpers/IAPIResponse';
 
 import {Button} from 'primereact/button';
 import {InputTextarea} from 'primereact/inputtextarea';
 import {Panel} from 'primereact/panel';
-import SummaryConfigurations from './SummaryConfigurations';
 
+import $ from 'jquery';
+import 'styles/Home.css';
 
-interface HomeState{
-  summaryPanelCollapsed: boolean;
-  inputText: string;
-  summaryRatio: number;
-}
 
 export default class Home extends React.Component<any,HomeState> {
 
@@ -29,7 +25,7 @@ export default class Home extends React.Component<any,HomeState> {
   }
   
   summarizeBtnClicked(): void{
-      fetch("http://127.0.0.1:5000/gensim-summarize/text", 
+      fetch("http://127.0.0.1:5000/gensim/text", 
       {
           method: 'POST',
           headers: 
@@ -46,7 +42,9 @@ export default class Home extends React.Component<any,HomeState> {
       .then(response => response.json())
       .then(
         (result) => {
-            $("#summaryResult").text(result);
+            var response : APIResponse = result as APIResponse;
+
+            $("#summaryResult").text(response.message);
 
             this.setState({
               summaryPanelCollapsed: false
@@ -76,7 +74,8 @@ export default class Home extends React.Component<any,HomeState> {
       <div className="home-container">
           <p id="home-greeting"> Welcome to SumItUp!</p>
 
-          <InputTextarea rows={20} cols={120}
+          <InputTextarea id="input-text-box"
+                         rows={20} cols={120}
                          value={this.state.inputText}
                          onChange={(e) => this.setState({inputText: e.currentTarget.value})} /> 
 
