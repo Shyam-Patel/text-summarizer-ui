@@ -1,4 +1,23 @@
-.ratio-slider-container{
-    text-align: center;
-    width: 150px;
-  }
+.configurations-container{
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.configuration{
+  margin-right: 50px;
+}
+
+#ratio-slider{
+  width: 150px;
+}
+
+.rb-option{
+  margin: 10px;
+}
+
+.rb-option label{
+  margin-left: 10px;;
+}
