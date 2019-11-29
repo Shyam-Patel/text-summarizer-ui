@@ -24,7 +24,7 @@ export interface HomeState{
 
 export default class Home extends React.Component<HomeProps,HomeState> {
 
-  apiURL:string = "http://127.0.0.1:5000";
+  apiURL:string = "https://ts-api.azurewebsites.net";
 
   constructor(props: any){
     super(props);
@@ -66,7 +66,7 @@ export default class Home extends React.Component<HomeProps,HomeState> {
             });
         },
         (error) => {
-            $("#summaryResult").text("Error contacting API: " + error);
+            $("#summaryResult").text("Error contacting API");
 
             this.setState({
               summaryPanelCollapsed: false
@@ -106,12 +106,9 @@ export default class Home extends React.Component<HomeProps,HomeState> {
           <p id="home-greeting"> Welcome to SumItUp!</p>
 
           <InputTextarea id="input-text-box"
-                         rows={20} cols={120}
+                         rows={this.state.textOrUrlInput === TextOrURL.URL ? 1 : 20} cols={100}
                          value={this.state.userInput}
                          onChange={(e) => this.setState({userInput: e.currentTarget.value})} /> 
-
-          <br/>
-          <Button label="Summarize!" className="p-button-raised" onClick={() => this.summarizeBtnClicked()}/>
 
           <br/>
           <SummaryConfigurations summaryRatio={this.state.summaryRatio} 
@@ -120,6 +117,9 @@ export default class Home extends React.Component<HomeProps,HomeState> {
                                  onTextOrUrlSelectionChange={(e:TextOrURL) => this.textOrUrlSelectionCallback(e)}
                                  algorithmSelected={this.state.algorithmSelected}
                                  onAlgorithmSelectionChange={(e:SummaryAlgorithms) => this.algorithmSelectionCallback(e)}/>
+
+          <br/>
+          <Button label="Summarize!" className="p-button-raised" onClick={() => this.summarizeBtnClicked()}/>
 
           <br/>
           <Panel header="Generated summary" 

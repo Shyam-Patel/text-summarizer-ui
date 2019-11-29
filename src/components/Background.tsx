@@ -10,7 +10,7 @@ export default class Background extends React.Component{
                 <div className="discussion-container">
                     <b>Purpose</b>
                     <p>This project was undertaken to demonstrate the capabilities of different popular summarization algorithms. <br/>
-                       This website communicates with an API to perform the majority of the work. Refer to 
+                       This website communicates with an API to perform the majority of the work. Source code is available on <a href="http://www.github.com/shyam-patel/text-summarizer-ui">GitHub</a>
                     </p>
 
                     <b>Summarization Techniques</b>
@@ -18,7 +18,10 @@ export default class Background extends React.Component{
                         1) Text Rank <br/>
                         "Text Rank" is based on the Page Rank algorithm, which is used by Google Search to rank web pages in search engine results.
 
-                        Refer to <a href="https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf">TextRank</a> for more information.
+                        Refer to <a href="https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf">TextRank</a> for more information. 
+                        
+                        <br/>
+
                         2) Luhn Summarizer <br/>
                         This is a heurestic method named after its creator, the IBM scientist Hans Peter Luhn. Published in 1958, 
                         it was one of the first text summarization algorithms. The basic idea is that authors will repeat important words throughout a paper.
