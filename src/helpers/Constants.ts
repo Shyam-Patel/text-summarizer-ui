@@ -4,6 +4,6 @@ export class TextOrURL{
 }
 
 export class SummaryAlgorithms{
-    static Gensim: string = "gensim";
-    static Sumy: string = "sumy";
+    static TextRank: string = "textrank"; 
+    static Luhn: string = "luhn";
 }

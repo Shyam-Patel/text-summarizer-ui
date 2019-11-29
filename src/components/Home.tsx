@@ -24,7 +24,7 @@ export interface HomeState{
 
 export default class Home extends React.Component<HomeProps,HomeState> {
 
-  apiURL:string = "http://127.0.0.1:5000/";
+  apiURL:string = "http://127.0.0.1:5000";
 
   constructor(props: any){
     super(props);
@@ -34,13 +34,13 @@ export default class Home extends React.Component<HomeProps,HomeState> {
       userInput: "",
       textOrUrlInput: TextOrURL.Text,
       summaryRatio: 50,
-      algorithmSelected: SummaryAlgorithms.Gensim
+      algorithmSelected: SummaryAlgorithms.TextRank
     }
 
   }
   
   summarizeBtnClicked(): void{
-      fetch(this.apiURL, 
+      fetch(this.getApiEndpoint(), 
       {
           method: 'POST',
           headers: 
@@ -49,9 +49,8 @@ export default class Home extends React.Component<HomeProps,HomeState> {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            user: "",
-            text: this.state.textOrUrlInput === TextOrURL.Text ? this.state.userInput : null,
-            url: this.state.textOrUrlInput === TextOrURL.URL ? this.state.userInput : null,
+            text: this.state.textOrUrlInput === TextOrURL.Text ? this.state.userInput : "",
+            url: this.state.textOrUrlInput === TextOrURL.URL ? this.state.userInput : "",
             ratio: this.state.summaryRatio / 100
           })
       })
@@ -93,6 +92,10 @@ export default class Home extends React.Component<HomeProps,HomeState> {
     this.setState({
       algorithmSelected : newValue
     })
+  }
+
+  getApiEndpoint(): string{
+    return this.apiURL + "/" + this.state.algorithmSelected + "/" + this.state.textOrUrlInput;
   }
 
   //NOTE: "() => fxn()" syntax makes sure that the fxn does not create its own "this" context which would cause

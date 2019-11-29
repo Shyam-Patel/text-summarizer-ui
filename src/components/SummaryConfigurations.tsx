@@ -60,18 +60,18 @@ export default class SummaryConfigurations extends React.Component<SummaryConfig
 
                     <div className="rb-option">
                         <RadioButton inputId="gensim-algo-rb" 
-                                        value={SummaryAlgorithms.Gensim}
+                                        value={SummaryAlgorithms.TextRank}
                                         onChange={(e) => this.handleAlgorithmSelection(e.value)} 
-                                        checked={this.props.algorithmSelected === SummaryAlgorithms.Gensim} />
-                        <label htmlFor="gensim-algo-rb">Gensim</label>
+                                        checked={this.props.algorithmSelected === SummaryAlgorithms.TextRank} />
+                        <label htmlFor="gensim-algo-rb">Text Rank</label>
                     </div>
 
                     <div className="rb-option">
                         <RadioButton inputId="sumy-algo-rb" 
-                                        value={SummaryAlgorithms.Sumy}
+                                        value={SummaryAlgorithms.Luhn}
                                         onChange={(e) => this.handleAlgorithmSelection(e.value)} 
-                                        checked={this.props.algorithmSelected === SummaryAlgorithms.Sumy} />
-                        <label htmlFor="sumy-algo-rb">Sumy</label>
+                                        checked={this.props.algorithmSelected === SummaryAlgorithms.Luhn} />
+                        <label htmlFor="sumy-algo-rb">Luhn</label>
                     </div>
                 </div>
 
